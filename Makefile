@@ -6,39 +6,42 @@
 #    By: dangonz3 <dangonz3@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/07 09:09:40 by dangonz3          #+#    #+#              #
-#    Updated: 2024/06/17 18:24:09 by dangonz3         ###   ########.fr        #
+#    Updated: 2024/06/24 16:17:54 by dangonz3         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = so_long
+# NAME = so_long
+NAME = so_long.out
 CC = gcc
 CCFLAGS = -Wall -Wextra -Werror
 
-# Colores
+# colors
 COLOR_GREEN = \033[0;32m
 COLOR_RESET = \033[0m
 
 # sources
 SRC_DIR = sources/
-SRC_FILES = main
-SRC = $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
+# SRC_FILES = check_map close_game handle_input initiate_game initiate_map render_map so_long
+SRC_FILES = check_map.c close_game.c handle_input.c initiate_game.c initiate_map.c render_map.c so_long.c
+# SRC = $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
+SRC = $(addprefix $(SRC_DIR), $(SRC_FILES))
 OBJ = $(SRC:.c=.o)
 
 # headers
 INCLUDE = -I./includes/
 
-# biblioteca LIBFT
+# library LIBFT
 LIBFT_DIR = ./libft
 LIBFT_LIB = $(LIBFT_DIR)/libft.a
 	
-# biblioteca MLX
+# library MLX
 MLX_DIR = ./mlx
 MLX_LIB = $(MLX_DIR)/libmlx_Linux.a 
 MLX_FLAGS = -L$(MLX_DIR) -lmlx -L/usr/lib/X11 -lXext -lX11
 # X11 ya está incluida en el sistema y se encarga de la gestión de la ventana \
 (tiene dos bibliotecas -lXext -lX11), la necesitamos para usar MLX
 
-# programa
+# program
 all: $(MLX_LIB) $(LIBFT_LIB) $(NAME)
 	@echo "$(COLOR_GREEN)------------ PROCESS FINISHED ------------ $(COLOR_RESET)"
 
@@ -54,13 +57,12 @@ $(MLX_LIB):
 
 $(LIBFT_LIB):
 	$(MAKE) -C $(LIBFT_DIR) all -s
-	@echo "$(COLOR_GREEN)------------ MESSAGE: LIBFT COMPILED ------------ $(COLOR_RESET)"
-
+	
 %.o: %.c
 	$(CC) $(CCFLAGS) -c $< -o $@ $(INCLUDE)
-	@echo "$(COLOR_GREEN)------------ MESSAGE: SO_LONG COMPILED ------------ $(COLOR_RESET)"
+	@echo "$(COLOR_GREEN)------------ MESSAGE: $@ COMPILED ------------ $(COLOR_RESET)"
 	
-# funciones adicionales
+# additional functions
 clean:
 	rm -f $(OBJ)
 	$(MAKE) -C $(LIBFT_DIR) clean -s
@@ -76,3 +78,7 @@ fclean:
 re: fclean all
 
 .PHONY:	all clean fclean re
+
+#compilar sin MAKEFILE desde /so_long
+#gcc -Wall -Werror -Wextra ./sources/*.c ./mlx/libmlx.a ./libft/libft.a -lX11 -lXext -o so_long -g
+#./so_long ./maps/map.ber

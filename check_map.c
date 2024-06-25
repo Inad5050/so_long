@@ -6,11 +6,11 @@
 /*   By: dangonz3 <dangonz3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 18:25:48 by dangonz3          #+#    #+#             */
-/*   Updated: 2024/06/18 18:10:40 by dangonz3         ###   ########.fr       */
+/*   Updated: 2024/06/20 13:27:03 by dangonz3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../includes/so_long.h"
 
 void	sl_check_map(t_game *game);
 void	sl_check_rows(t_game *game);
@@ -28,17 +28,17 @@ void	sl_check_map(t_game *game)
 	sl_verify_map_elements(game);
 }
 
-void	sl_check_rows_colums(t_game *game)
+void	sl_check_rows(t_game *game)
 {
 	int	i;
 
 	i = 0;
 	while (i < game->map.axis_x)
 	{
-		if (game->map.all[i][0] != WALL)
+		if (game->map.all[0][i] != WALL)
 			sl_error("Invalid Map. Missing wall on the first row!\n", game);
-		else if (game->map.all[i][game->map.axis_y - 1] != WALL)
-			sl_error("Invalid Map. Missing wall of the last row!\n", game);
+		else if (game->map.all[game->map.axis_y - 1][i] != WALL)
+			sl_error("Invalid Map. Missing wall on the last row!\n", game);
 		i++;
 	}
 	if (i < 3)
@@ -52,9 +52,9 @@ void	sl_check_columns(t_game *game)
 	i = 0;
 	while (i < game->map.axis_y)
 	{
-		if (game->map.all[0][i] != WALL)
+		if (game->map.all[i][0] != WALL)
 			sl_error("Invalid Map. Missing wall on the first column!\n", game);
-		else if (game->map.all[game->map.axis_x - 1][i] != WALL)
+		else if (game->map.all[i][game->map.axis_x - 1] != WALL)
 			sl_error("Invalid Map. Missing wall on the last column!\n", game);
 		i++;
 	}
@@ -66,7 +66,7 @@ void	sl_count_map_elements(t_game *game)
 {
 	int	y;
 	int	x;
-	
+
 	y = 0;
 	while (y < game->map.axis_y)
 	{
