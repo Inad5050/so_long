@@ -6,7 +6,7 @@
 /*   By: dangonz3 <dangonz3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 18:25:48 by dangonz3          #+#    #+#             */
-/*   Updated: 2024/06/20 13:27:03 by dangonz3         ###   ########.fr       */
+/*   Updated: 2024/06/27 16:48:29 by dangonz3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ void	sl_check_rows(t_game *game);
 void	sl_check_columns(t_game *game);
 void	sl_count_map_elements(t_game *game);
 void	sl_verify_map_elements(t_game *game);
-
-//falta una funcion que compruebe las rutas de acceso a las monedas y la salida
 
 void	sl_check_map(t_game *game)
 {
@@ -78,8 +76,8 @@ void	sl_count_map_elements(t_game *game)
 			else if (game->map.all[y][x] == PLAYER)
 			{
 				game->map.player++;
-				game->map.initial_position_x = x;
-				game->map.initial_position_y = y;
+				game->map.position_x = x;
+				game->map.position_y = y;
 			}
 			else if (game->map.all[y][x] == COINS)
 				game->map.coins++;

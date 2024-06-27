@@ -6,7 +6,7 @@
 /*   By: dangonz3 <dangonz3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 12:44:45 by dangonz3          #+#    #+#             */
-/*   Updated: 2024/06/24 13:21:30 by dangonz3         ###   ########.fr       */
+/*   Updated: 2024/06/27 15:47:07 by dangonz3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	sl_render_player(t_game *game, int y, int x)
 void	sl_render_sprite(t_game *game, t_sprite image, int y, int x)
 {
 	mlx_put_image_to_window (game->mlx_ptr, game->win_ptr, \
-		image.sprite_ptr, x * image.width, y * image.width);
+	image.sprite_ptr, x * IMG_SIZE, y * IMG_SIZE);
 }
 
 void	sl_movement_counter(t_game *game)
@@ -89,6 +89,3 @@ void	sl_movement_counter(t_game *game)
 	free(movements);
 	free(phrase);
 }
-/* 
-int		mlx_string_put(void *mlx_ptr, void *win_ptr, int x,
-		int y, int color, char *string); */
