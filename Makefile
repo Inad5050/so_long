@@ -6,12 +6,12 @@
 #    By: dangonz3 <dangonz3@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/07 09:09:40 by dangonz3          #+#    #+#              #
-#    Updated: 2024/06/24 16:17:54 by dangonz3         ###   ########.fr        #
+#    Updated: 2024/06/27 16:45:37 by dangonz3         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # NAME = so_long
-NAME = so_long.out
+NAME = so_long
 CC = gcc
 CCFLAGS = -Wall -Wextra -Werror
 
@@ -22,7 +22,7 @@ COLOR_RESET = \033[0m
 # sources
 SRC_DIR = sources/
 # SRC_FILES = check_map close_game handle_input initiate_game initiate_map render_map so_long
-SRC_FILES = check_map.c close_game.c handle_input.c initiate_game.c initiate_map.c render_map.c so_long.c
+SRC_FILES = check_map.c close_game.c handle_input.c initiate_images.c initiate_game.c render_map.c main.c
 # SRC = $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 SRC = $(addprefix $(SRC_DIR), $(SRC_FILES))
 OBJ = $(SRC:.c=.o)
