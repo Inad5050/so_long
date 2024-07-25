@@ -6,7 +6,7 @@
 /*   By: dangonz3 <dangonz3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 12:44:45 by dangonz3          #+#    #+#             */
-/*   Updated: 2024/07/25 16:58:44 by dangonz3         ###   ########.fr       */
+/*   Updated: 2024/07/07 21:52:59 by dangonz3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,16 @@ void	sl_identify_sprite(t_game *game, int y, int x)
 	}
 	else if (game->map.all[y][x] == PLAYER)
 		sl_render_player (game, y, x);
+	else if (game->map.all[y][x] == ENEMY)
+		sl_render_sprite (game, game->enemy_sprite, y, x);
+	else if (game->map.all[y][x] == BOSSA)
+		sl_render_sprite (game, game->boss_a_sprite, y, x);
+	else if (game->map.all[y][x] == BOSSB)
+		sl_render_sprite (game, game->boss_b_sprite, y, x);
+	else if (game->map.all[y][x] == TERRAIN)
+		sl_render_sprite (game, game->terrain_sprite, y, x);
+	else if (game->map.all[y][x] == MIMIC)
+		sl_render_sprite (game, game->coin_sprite, y, x);
 }
 
 void	sl_render_player(t_game *game, int y, int x)
@@ -78,16 +88,10 @@ void	sl_render_sprite(t_game *game, t_sprite image, int y, int x)
 void	sl_movement_counter(t_game *game)
 {
 	char	*movements;
-	char	*movements_count;
 	char	*coins;
-	char	*coins_count;
 
-	movements_count = ft_itoa(game->movements);
-	movements = ft_strjoin("MOVEMENTS : ", movements_count);
-	free(movements_count);
-	coins_count = ft_itoa(game->map.coin_number);
-	coins = ft_strjoin("COINS : ", coins_count);
-	free(coins_count);
+	movements = ft_strjoin("MOVEMENTS : ", ft_itoa(game->movements));
+	coins = ft_strjoin("COINS : ", ft_itoa(game->map.coin_number));
 	mlx_string_put(game->mlx_ptr, game->win_ptr, 15, 15, 0xFFFFFF, movements);
 	mlx_string_put(game->mlx_ptr, game->win_ptr, 200, 15, 0xFFFFFF, coins);
 	free(movements);

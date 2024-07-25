@@ -6,7 +6,7 @@
 /*   By: dangonz3 <dangonz3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 15:17:04 by dangonz3          #+#    #+#             */
-/*   Updated: 2024/07/25 16:42:57 by dangonz3         ###   ########.fr       */
+/*   Updated: 2024/07/08 09:42:41 by dangonz3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,10 @@ void	sl_player_move(t_game *game, int current_y, \
 {
 	game->player_sprite = player_sprite;
 	if ((game->map.all[current_y][current_x] == EXIT && \
-	game->map.coin_number <= 0))
+	game->map.coin_number <= 0)
+	|| game->map.all[current_y][current_x] == ENEMY || \
+	game->map.all[current_y][current_x] == BOSSA
+	|| game->map.all[current_y][current_x] == BOSSB)
 		sl_close_game(game);
 	if (game->map.all[current_y][current_x] == WALL \
 	|| (game->map.all[current_y][current_x] == \
@@ -61,7 +64,8 @@ void	sl_player_move_two(t_game *game, int current_y, \
 	previous_y = game->map.position_y;
 	previous_x = game->map.position_x;
 	if (game->map.all[current_y][current_x] == FLOOR \
-	|| game->map.all[current_y][current_x] == COIN)
+	|| game->map.all[current_y][current_x] == COIN || \
+	game->map.all[current_y][current_x] == TERRAIN)
 	{
 		if (game->map.all[current_y][current_x] == COIN)
 			game->map.coin_number--;
@@ -76,6 +80,22 @@ void	sl_player_move_two(t_game *game, int current_y, \
 
 void	sl_handle_enemies(t_game *game)
 {
+	if (game->map.enemy_number > 0)
+		sl_basic_enemy(game);
+	if (game->map.boss_a_number > 0)
+	{
+		if (game->map.boss_a_active % 2 == 0)
+		{
+			sl_boss_a(game);
+			game->boss_a_sprite = sl_new_sprite(BOSS_A_SPRITE_CLOSED, game);
+		}
+		else
+			game->boss_a_sprite = sl_new_sprite(BOSS_A_SPRITE_OPEN, game);
+		game->map.boss_a_active++;
+	}
+	if (game->map.boss_b_number > 0)
+		sl_boss_b(game);
+	sl_activate_mimics(game);
 	sl_render_map(game);
 	sl_movement_counter(game);
 }
