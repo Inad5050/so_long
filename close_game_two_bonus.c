@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   close_game2.c                                      :+:      :+:    :+:   */
+/*   close_game_two_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dangonz3 <dangonz3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 21:29:34 by dangonz3          #+#    #+#             */
-/*   Updated: 2024/07/19 15:38:19 by dangonz3         ###   ########.fr       */
+/*   Updated: 2024/07/25 19:42:23 by dangonz3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../includes/so_long_bonus.h"
 
 void	sl_destroy_images(t_game *game)
 {

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   auxiliars.c                                        :+:      :+:    :+:   */
+/*   auxiliars_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dangonz3 <dangonz3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 16:11:04 by dangonz3          #+#    #+#             */
-/*   Updated: 2024/07/25 16:35:47 by dangonz3         ###   ########.fr       */
+/*   Updated: 2024/07/25 19:42:05 by dangonz3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../includes/so_long_bonus.h"
 
 char	*sl_strjoin(char *s1, const char *s2)
 {

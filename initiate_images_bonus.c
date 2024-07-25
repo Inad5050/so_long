@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   initiate_images.c                                  :+:      :+:    :+:   */
+/*   initiate_images_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dangonz3 <dangonz3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 20:44:45 by dangonz3          #+#    #+#             */
-/*   Updated: 2024/07/19 15:39:14 by dangonz3         ###   ########.fr       */
+/*   Updated: 2024/07/25 19:42:37 by dangonz3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../includes/so_long_bonus.h"
 
 void		sl_init_mlx(t_game *game);
 void		sl_init_sprites(t_game *game);

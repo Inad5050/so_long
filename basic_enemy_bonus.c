@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   basic_enemy.c                                      :+:      :+:    :+:   */
+/*   basic_enemy_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dangonz3 <dangonz3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/30 12:26:16 by dangonz3          #+#    #+#             */
-/*   Updated: 2024/07/19 15:49:55 by dangonz3         ###   ########.fr       */
+/*   Updated: 2024/07/25 19:42:10 by dangonz3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../includes/so_long_bonus.h"
 
 void	sl_initiate_enemies(t_game *game);
 void	sl_select_basic_enemy(t_game *game);

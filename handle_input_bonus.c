@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_input.c                                     :+:      :+:    :+:   */
+/*   handle_input_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dangonz3 <dangonz3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 15:17:04 by dangonz3          #+#    #+#             */
-/*   Updated: 2024/07/19 15:49:22 by dangonz3         ###   ########.fr       */
+/*   Updated: 2024/07/25 19:42:30 by dangonz3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../includes/so_long_bonus.h"
 
 int		sl_handle_input(int keysym, t_game *game);
 void	sl_player_move(t_game *game, int x, int y, int player_sprite);
