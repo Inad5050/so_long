@@ -6,7 +6,7 @@
 /*   By: dangonz3 <dangonz3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 15:55:01 by dangonz3          #+#    #+#             */
-/*   Updated: 2024/07/19 15:46:52 by dangonz3         ###   ########.fr       */
+/*   Updated: 2024/07/25 20:40:59 by dangonz3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,12 @@ void	sl_initiate_flood(t_game *game)
 	game->map.element = ft_calloc(game->map.element_number, sizeof(t_element));
 	if (!game->map.element)
 		sl_error("Couldn`t allocate memory for game->map.element!\n", game);
-	game->map.flooded = (int **)calloc(game->map.axis_y, sizeof(int *));
+	game->map.flooded = (int **)ft_calloc(game->map.axis_y, sizeof(int *));
 	if (!game->map.flooded)
 		sl_error("Couldn`t alloc game->map.filled_bool!\n", game);
 	while (i < game->map.axis_y)
 	{
-		game->map.flooded[i] = (int *)calloc(game->map.axis_x, sizeof(int));
+		game->map.flooded[i] = (int *)ft_calloc(game->map.axis_x, sizeof(int));
 		if (!game->map.flooded[i])
 			sl_error("Couldn`t alloc game->map.filled_bool[i]!\n", game);
 		i++;
