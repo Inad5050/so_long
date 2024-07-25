@@ -6,7 +6,7 @@
 /*   By: dangonz3 <dangonz3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 11:11:08 by dangonz3          #+#    #+#             */
-/*   Updated: 2024/07/25 18:45:24 by dangonz3         ###   ########.fr       */
+/*   Updated: 2024/07/25 20:00:21 by dangonz3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,4 +108,3 @@ void	sl_init_vars(t_game *game)
 	game->mlx_ptr = NULL;
 	game->win_ptr = NULL;
 }
-
