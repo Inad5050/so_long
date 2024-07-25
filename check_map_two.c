@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   check_map2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dangonz3 <dangonz3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/17 14:32:20 by dangonz3          #+#    #+#             */
-/*   Updated: 2024/07/25 16:43:42 by dangonz3         ###   ########.fr       */
+/*   Created: 2024/07/07 21:22:51 by dangonz3          #+#    #+#             */
+/*   Updated: 2024/07/07 21:23:54 by dangonz3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int	main(int argc, char	**argv)
+void	sl_verify_map_elements(t_game *game)
 {
-	t_game	*game;
-
-	game = ft_calloc(sizeof(t_game), 1);
-	if (!game)
-		return (ft_printf("\nERROR\nCouldn't assign memory for game.\n"), 1);
-	sl_initiate_game(argc, argv, game);
-	sl_check_map(game);
-	sl_flood_map(game);
-	sl_init_mlx(game);
-	sl_init_sprites(game);
-	sl_render_map(game);
-	mlx_hook(game->win_ptr, ON_KEYDOWN, 1L << 0, sl_handle_input, game);
-	mlx_loop(game->mlx_ptr);
-	return (0);
+	if (game->map.coin_number < 1)
+		sl_error("Invalid Map. There are no Coins!\n", game);
+	else if (game->map.exit_number != 1)
+		sl_error("Invalid Map. Invalid Exit number!\n", game);
+	else if (game->map.player_number != 1)
+		sl_error("Invalid Map. Invalid Player number!\n", game);
 }

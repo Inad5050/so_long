@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   flood_map.c                                        :+:      :+:    :+:   */
+/*   flood_map_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dangonz3 <dangonz3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 15:55:01 by dangonz3          #+#    #+#             */
-/*   Updated: 2024/07/25 20:40:59 by dangonz3         ###   ########.fr       */
+/*   Updated: 2024/07/25 20:41:13 by dangonz3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../includes/so_long_bonus.h"
 
 void	sl_flood_map(t_game *game);
 void	sl_initiate_flood(t_game *game);
