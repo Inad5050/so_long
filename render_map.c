@@ -6,7 +6,7 @@
 /*   By: dangonz3 <dangonz3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 12:44:45 by dangonz3          #+#    #+#             */
-/*   Updated: 2024/06/27 15:47:07 by dangonz3         ###   ########.fr       */
+/*   Updated: 2024/07/07 21:52:59 by dangonz3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,24 +40,31 @@ int	sl_render_map(t_game *game)
 
 void	sl_identify_sprite(t_game *game, int y, int x)
 {
-	char	parameter;
-
-	parameter = game->map.all[y][x];
-	if (parameter == WALL)
-		sl_render_sprite (game, game->wall, y, x);
-	else if (parameter == FLOOR)
-		sl_render_sprite (game, game->floor, y, x);
-	else if (parameter == COINS)
-		sl_render_sprite (game, game->coins, y, x);
-	else if (parameter == EXIT)
+	if (game->map.all[y][x] == WALL)
+		sl_render_sprite (game, game->wall_sprite, y, x);
+	else if (game->map.all[y][x] == FLOOR)
+		sl_render_sprite (game, game->floor_sprite, y, x);
+	else if (game->map.all[y][x] == COIN)
+		sl_render_sprite (game, game->coin_sprite, y, x);
+	else if (game->map.all[y][x] == EXIT)
 	{
-		if (game->map.coins == 0)
+		if (game->map.coin_number == 0)
 			sl_render_sprite (game, game->exit_open, y, x);
 		else
 			sl_render_sprite (game, game->exit_closed, y, x);
 	}
-	else if (parameter == PLAYER)
+	else if (game->map.all[y][x] == PLAYER)
 		sl_render_player (game, y, x);
+	else if (game->map.all[y][x] == ENEMY)
+		sl_render_sprite (game, game->enemy_sprite, y, x);
+	else if (game->map.all[y][x] == BOSSA)
+		sl_render_sprite (game, game->boss_a_sprite, y, x);
+	else if (game->map.all[y][x] == BOSSB)
+		sl_render_sprite (game, game->boss_b_sprite, y, x);
+	else if (game->map.all[y][x] == TERRAIN)
+		sl_render_sprite (game, game->terrain_sprite, y, x);
+	else if (game->map.all[y][x] == MIMIC)
+		sl_render_sprite (game, game->coin_sprite, y, x);
 }
 
 void	sl_render_player(t_game *game, int y, int x)
@@ -81,11 +88,12 @@ void	sl_render_sprite(t_game *game, t_sprite image, int y, int x)
 void	sl_movement_counter(t_game *game)
 {
 	char	*movements;
-	char	*phrase;
+	char	*coins;
 
-	movements = ft_itoa(game->movements);
-	phrase = ft_strjoin("Movements : ", movements);
-	mlx_string_put(game->mlx_ptr, game->win_ptr, 40, 20, 99999, phrase);
+	movements = ft_strjoin("MOVEMENTS : ", ft_itoa(game->movements));
+	coins = ft_strjoin("COINS : ", ft_itoa(game->map.coin_number));
+	mlx_string_put(game->mlx_ptr, game->win_ptr, 15, 15, 0xFFFFFF, movements);
+	mlx_string_put(game->mlx_ptr, game->win_ptr, 200, 15, 0xFFFFFF, coins);
 	free(movements);
-	free(phrase);
+	free(coins);
 }
