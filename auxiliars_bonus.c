@@ -1,31 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   auxiliars.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dangonz3 <dangonz3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/17 14:32:20 by dangonz3          #+#    #+#             */
-/*   Updated: 2024/07/25 16:43:42 by dangonz3         ###   ########.fr       */
+/*   Created: 2024/07/25 16:11:04 by dangonz3          #+#    #+#             */
+/*   Updated: 2024/07/25 16:35:47 by dangonz3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int	main(int argc, char	**argv)
+char	*sl_strjoin(char *s1, const char *s2)
 {
-	t_game	*game;
+	int		i;
+	int		len_s1;
+	int		len_s2;
+	char	*result;
 
-	game = ft_calloc(sizeof(t_game), 1);
-	if (!game)
-		return (ft_printf("\nERROR\nCouldn't assign memory for game.\n"), 1);
-	sl_initiate_game(argc, argv, game);
-	sl_check_map(game);
-	sl_flood_map(game);
-	sl_init_mlx(game);
-	sl_init_sprites(game);
-	sl_render_map(game);
-	mlx_hook(game->win_ptr, ON_KEYDOWN, 1L << 0, sl_handle_input, game);
-	mlx_loop(game->mlx_ptr);
-	return (0);
+	i = 0;
+	len_s1 = ft_strlen(s1);
+	len_s2 = ft_strlen(s2);
+	result = ft_calloc(len_s1 + len_s2 + 1, sizeof(char));
+	if (result == NULL)
+		return (NULL);
+	while (s1[i])
+	{
+		result[i] = s1[i];
+		i++;
+	}
+	i = 0;
+	while (s2[i])
+	{
+		result[len_s1 + i] = s2[i];
+		i++;
+	}
+	result[len_s1 + i] = '\0';
+	free(s1);
+	return (result);
 }

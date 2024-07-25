@@ -6,7 +6,7 @@
 /*   By: dangonz3 <dangonz3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 11:11:08 by dangonz3          #+#    #+#             */
-/*   Updated: 2024/06/30 19:27:38 by dangonz3         ###   ########.fr       */
+/*   Updated: 2024/07/25 18:51:18 by dangonz3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,13 @@ void	sl_check_arguments(int argc, char **argv, t_game *game)
 {
 	int	map_parameter_len;
 
-	game->map_bool = 0;
 	if (argc > 2)
-		sl_error("Too many arguments! (Only 2 needed).", game);
+		sl_error("Too many arguments!\n", game);
 	if (argc < 2)
-		sl_error("Map file missing!", game);
+		sl_error("Map file missing!\n", game);
 	map_parameter_len = ft_strlen(argv[1]);
 	if (!ft_strnstr(&argv[1][map_parameter_len - 4], ".ber", 4))
-		sl_error("Wrong map file extention! (Should be .ber).", game);
+		sl_error("Wrong map file extention! (Should be .ber).\n", game);
 }
 
 void	sl_init_map(t_game *game, char *argv)
@@ -45,9 +44,9 @@ void	sl_init_map(t_game *game, char *argv)
 	char	*line_temp;
 	int		map_fd;
 
-	map_fd = open(argv,	O_RDONLY);
+	map_fd = open(argv, O_RDONLY);
 	if (map_fd == -1)
-		sl_error("Can`t open Map!", game);
+		sl_error("Can`t open Map!\n", game);
 	map_temp = ft_strdup("");
 	game->map.axis_y = 0;
 	while (1)
@@ -55,7 +54,7 @@ void	sl_init_map(t_game *game, char *argv)
 		line_temp = ft_get_next_line(map_fd);
 		if (line_temp == NULL)
 			break ;
-		map_temp = ft_strjoin(map_temp, line_temp);
+		map_temp = sl_strjoin(map_temp, line_temp);
 		free(line_temp);
 		game->map.axis_y++;
 	}
@@ -75,19 +74,19 @@ void	sl_check_for_empty_line(char *map_temp, t_game *game)
 	{
 		free(map_temp);
 		sl_error("Invalid map. The map has an empty \
-			line at the beginning.", game);
+			line at the beginning.\n", game);
 	}
 	else if (map_temp[ft_strlen(map_temp) - 1] == '\n')
 	{
 		free(map_temp);
-		sl_error("Invalid map. The map has an empty line at the end.", game);
+		sl_error("Invalid map. The map has an empty line at the end.\n", game);
 	}
 	while (map_temp[i + 1])
 	{
 		if (map_temp[i] == '\n' && map_temp[i + 1] == '\n')
 		{
 			free(map_temp);
-			sl_error("Invalid map! The map has an empty line.", game);
+			sl_error("Invalid map! The map has an empty line.\n", game);
 		}
 		i++;
 	}
@@ -95,11 +94,18 @@ void	sl_check_for_empty_line(char *map_temp, t_game *game)
 
 void	sl_init_vars(t_game *game)
 {
+	game->images_bool = 0;
 	game->movements = 0;
+	game->map.player_number = 0;
 	game->map.coin_number = 0;
 	game->map.exit_number = 0;
-	game->map.player_number = 0;
 	game->map.enemy_number = 0;
 	game->map.axis_x = ft_strlen(game->map.all[0]);
 	game->player_sprite = FRONT;
+	game->game_loop = 0;
+	game->map.element = NULL;
+	game->map.flooded = NULL;
+	game->mlx_ptr = NULL;
+	game->win_ptr = NULL;
+	game->map.enemy = NULL;
 }

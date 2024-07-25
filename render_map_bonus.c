@@ -6,7 +6,7 @@
 /*   By: dangonz3 <dangonz3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 12:44:45 by dangonz3          #+#    #+#             */
-/*   Updated: 2024/06/30 16:57:33 by dangonz3         ###   ########.fr       */
+/*   Updated: 2024/07/25 16:35:39 by dangonz3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,25 +40,22 @@ int	sl_render_map(t_game *game)
 
 void	sl_identify_sprite(t_game *game, int y, int x)
 {
-	char	parameter;
-
-	parameter = game->map.all[y][x];
-	if (parameter == WALL)
+	if (game->map.all[y][x] == WALL)
 		sl_render_sprite (game, game->wall_sprite, y, x);
-	else if (parameter == FLOOR)
+	else if (game->map.all[y][x] == FLOOR)
 		sl_render_sprite (game, game->floor_sprite, y, x);
-	else if (parameter == COINS)
+	else if (game->map.all[y][x] == COIN)
 		sl_render_sprite (game, game->coin_sprite, y, x);
-	else if (parameter == EXIT)
+	else if (game->map.all[y][x] == EXIT)
 	{
 		if (game->map.coin_number == 0)
 			sl_render_sprite (game, game->exit_open, y, x);
 		else
 			sl_render_sprite (game, game->exit_closed, y, x);
 	}
-	else if (parameter == PLAYER)
+	else if (game->map.all[y][x] == PLAYER)
 		sl_render_player (game, y, x);
-	else if (parameter == ENEMY)
+	else if (game->map.all[y][x] == ENEMY)
 		sl_render_sprite (game, game->enemy_sprite, y, x);
 }
 
@@ -83,11 +80,18 @@ void	sl_render_sprite(t_game *game, t_sprite image, int y, int x)
 void	sl_movement_counter(t_game *game)
 {
 	char	*movements;
-	char	*str;
+	char	*movements_count;
+	char	*coins;
+	char	*coins_count;
 
-	movements = ft_itoa(game->movements);
-	str = ft_strjoin("MOVEMENTS : ", movements);
-	mlx_string_put(game->mlx_ptr, game->win_ptr, 30, 30, 0xFFFFFF, str);
+	movements_count = ft_itoa(game->movements);
+	movements = ft_strjoin("MOVEMENTS : ", movements_count);
+	free(movements_count);
+	coins_count = ft_itoa(game->map.coin_number);
+	coins = ft_strjoin("COINS : ", coins_count);
+	free(coins_count);
+	mlx_string_put(game->mlx_ptr, game->win_ptr, 15, 15, 0xFFFFFF, movements);
+	mlx_string_put(game->mlx_ptr, game->win_ptr, 200, 15, 0xFFFFFF, coins);
 	free(movements);
-	free(str);
+	free(coins);
 }

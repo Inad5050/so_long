@@ -6,7 +6,7 @@
 /*   By: dangonz3 <dangonz3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 15:17:04 by dangonz3          #+#    #+#             */
-/*   Updated: 2024/06/27 15:35:36 by dangonz3         ###   ########.fr       */
+/*   Updated: 2024/07/25 16:42:57 by dangonz3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 int		sl_handle_input(int keysym, t_game *game);
 void	sl_player_move(t_game *game, int x, int y, int player_sprite);
+void	sl_player_move_two(t_game *game, int current_y, \
+		int current_x);
+void	sl_handle_enemies(t_game *game);
 
 int	sl_handle_input(int keysym, t_game *game)
 {
@@ -31,35 +34,48 @@ int	sl_handle_input(int keysym, t_game *game)
 	if (keysym == KEY_DOWN || keysym == KEY_S)
 		sl_player_move(game, game->map.position_y + 1, \
 			game->map.position_x, FRONT);
+	game->game_loop++;
 	return (0);
 }
 
 void	sl_player_move(t_game *game, int current_y, \
 		int current_x, int player_sprite)
 {
-	int	previous_x;
-	int	previous_y;
-
 	game->player_sprite = player_sprite;
+	if ((game->map.all[current_y][current_x] == EXIT && \
+	game->map.coin_number <= 0))
+		sl_close_game(game);
+	if (game->map.all[current_y][current_x] == WALL \
+	|| (game->map.all[current_y][current_x] == \
+	EXIT && game->map.coin_number > 0))
+		return ;
+	sl_player_move_two(game, current_y, current_x);
+}
+
+void	sl_player_move_two(t_game *game, int current_y, \
+		int current_x)
+{
+	int	previous_y;
+	int	previous_x;
+
 	previous_y = game->map.position_y;
 	previous_x = game->map.position_x;
-	if (game->map.all[current_y][current_x] == EXIT && game->map.coins <= 0)
-		sl_close_game(game);
-	if (game->map.all[current_y][current_x] == WALL)
-		return ;
 	if (game->map.all[current_y][current_x] == FLOOR \
-	|| game->map.all[current_y][current_x] == COINS \
-	|| game->map.all[current_y][current_x] == EXIT)
+	|| game->map.all[current_y][current_x] == COIN)
 	{
-		if (game->map.all[current_y][current_x] == COINS)
-			game->map.coins--;
-		if (game->map.all[current_y][current_x] != EXIT)
-			game->map.all[current_y][current_x] = PLAYER;
-		if (game->map.all[previous_y][previous_x] != EXIT)
-			game->map.all[previous_y][previous_x] = FLOOR;
+		if (game->map.all[current_y][current_x] == COIN)
+			game->map.coin_number--;
+		game->map.all[previous_y][previous_x] = FLOOR;
+		game->map.all[current_y][current_x] = PLAYER;
 		game->movements++;
 		game->map.position_x = current_x;
 		game->map.position_y = current_y;
-		sl_render_map(game);
+		sl_handle_enemies(game);
 	}
+}
+
+void	sl_handle_enemies(t_game *game)
+{
+	sl_render_map(game);
+	sl_movement_counter(game);
 }
