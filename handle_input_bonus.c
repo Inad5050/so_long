@@ -6,7 +6,7 @@
 /*   By: dangonz3 <dangonz3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 15:17:04 by dangonz3          #+#    #+#             */
-/*   Updated: 2024/07/25 19:42:30 by dangonz3         ###   ########.fr       */
+/*   Updated: 2024/07/30 20:39:59 by dangonz3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,16 +41,31 @@ int	sl_handle_input(int keysym, t_game *game)
 void	sl_player_move(t_game *game, int current_y, \
 		int current_x, int player_sprite)
 {
+	int	previous_y;
+	int	previous_x;
+
+	previous_y = game->map.position_y;
+	previous_x = game->map.position_x;
 	game->player_sprite = player_sprite;
 	if ((game->map.all[current_y][current_x] == EXIT && \
-	game->map.coin_number <= 0) \
-	|| game->map.all[current_y][current_x] == ENEMY)
+	game->map.coin_number <= 0))
 		sl_close_game(game);
-	if (game->map.all[current_y][current_x] == WALL \
-	|| (game->map.all[current_y][current_x] == \
-	EXIT && game->map.coin_number > 0))
+	else if (game->map.all[current_y][current_x] == WALL)
 		return ;
-	sl_player_move_two(game, current_y, current_x);
+	else if (game->map.all[current_y][current_x] == \
+	EXIT && game->map.coin_number > 0)
+	{
+		if (game->ondoor == 0)
+			game->map.all[previous_y][previous_x] = FLOOR;
+		game->map.all[current_y][current_x] = EXIT;
+		game->movements++;
+		game->map.position_x = current_x;
+		game->map.position_y = current_y;
+		game->ondoor = 1;
+		sl_handle_enemies(game);
+	}
+	else
+		sl_player_move_two(game, current_y, current_x);
 }
 
 void	sl_player_move_two(t_game *game, int current_y, \
@@ -66,11 +81,13 @@ void	sl_player_move_two(t_game *game, int current_y, \
 	{
 		if (game->map.all[current_y][current_x] == COIN)
 			game->map.coin_number--;
-		game->map.all[previous_y][previous_x] = FLOOR;
+		if (game->ondoor == 0)
+			game->map.all[previous_y][previous_x] = FLOOR;
 		game->map.all[current_y][current_x] = PLAYER;
 		game->movements++;
 		game->map.position_x = current_x;
 		game->map.position_y = current_y;
+		game->ondoor = 0;
 		sl_handle_enemies(game);
 	}
 }
