@@ -6,7 +6,7 @@
 /*   By: dangonz3 <dangonz3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 13:52:43 by dangonz3          #+#    #+#             */
-/*   Updated: 2024/07/25 18:24:57 by dangonz3         ###   ########.fr       */
+/*   Updated: 2024/07/30 20:31:07 by dangonz3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,7 @@ typedef struct s_game
 	int			movements;
 	int			player_sprite;
 	int			game_loop;
+	int			ondoor;
 	t_sprite	wall_sprite;
 	t_sprite	floor_sprite;
 	t_sprite	coin_sprite;

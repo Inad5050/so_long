@@ -6,7 +6,7 @@
 /*   By: dangonz3 <dangonz3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 13:52:43 by dangonz3          #+#    #+#             */
-/*   Updated: 2024/07/25 20:01:46 by dangonz3         ###   ########.fr       */
+/*   Updated: 2024/08/02 16:18:08 by dangonz3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,7 @@ typedef struct s_game
 	int			movements;
 	int			player_sprite;
 	int			game_loop;
+	int			ondoor;
 	t_sprite	wall_sprite;
 	t_sprite	floor_sprite;
 	t_sprite	coin_sprite;
@@ -130,11 +131,11 @@ typedef struct s_game
 }		t_game;
 
 //initiate_game
-void		sl_initiate_game(int argc, char **argv, t_game *game); //(1)
-void		sl_check_arguments(int argc, char **argv, t_game *game); //(1.1)
-void		sl_init_map(t_game *game, char *argv); //(1.2)
-void		sl_check_for_empty_line(char *map, t_game *game); //(1.2.1)
-void		sl_init_vars(t_game *game); //(1.3)
+void		sl_initiate_game(int argc, char **argv, t_game *game);
+void		sl_check_arguments(int argc, char **argv, t_game *game);
+void		sl_init_map(t_game *game, char *argv);
+void		sl_check_for_empty_line(char *map, t_game *game);
+void		sl_init_vars(t_game *game);
 
 //check_map
 void		sl_check_map(t_game *game);
@@ -154,22 +155,22 @@ void		sl_floodfill(t_game *game, int x, int y, int index);
 void		sl_check_flood(t_game *game);
 
 //initiate_images
-void		sl_init_mlx(t_game *game); //(5)
-void		sl_init_sprites(t_game *game); //(6)
-t_sprite	sl_new_sprite(char *file, t_game *game); //(6.1)
+void		sl_init_mlx(t_game *game);
+void		sl_init_sprites(t_game *game);
+t_sprite	sl_new_sprite(char *file, t_game *game);
 
 //render_map
-int			sl_render_map(t_game *game); //(7)(8) REPETEADLY
-void		sl_identify_sprite(t_game *game, int y, int x); //(7.1)
-void		sl_render_player(t_game *game, int y, int x); //(7.2)
+int			sl_render_map(t_game *game);
+void		sl_identify_sprite(t_game *game, int y, int x);
+void		sl_render_player(t_game *game, int y, int x);
 void		sl_render_sprite(t_game *game, t_sprite sprite, \
-				int y, int x); //(7.3)
-void		sl_movement_counter(t_game *game); //(7.4)
+				int y, int x);
+void		sl_movement_counter(t_game *game);
 
 //basic_enemies
-void		sl_initiate_enemies(t_game *game); //(4.5)
-void		sl_basic_enemy(t_game *game); //(8)
-void		sl_enemy_direction(t_game *game, int i); //(8.1)
+void		sl_initiate_enemies(t_game *game);
+void		sl_basic_enemy(t_game *game);
+void		sl_enemy_direction(t_game *game, int i);
 void		sl_enemy_direction_alternative(t_game *game, int i);
 void		sl_enemy_move(t_game *game, int current_y, \
 		int current_x, int i);
