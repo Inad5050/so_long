@@ -6,7 +6,7 @@
 /*   By: dangonz3 <dangonz3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 14:32:20 by dangonz3          #+#    #+#             */
-/*   Updated: 2024/08/05 19:03:08 by dangonz3         ###   ########.fr       */
+/*   Updated: 2024/08/05 19:25:45 by dangonz3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,8 @@ int	main(int argc, char	**argv)
 	sl_init_mlx(game);
 	sl_init_sprites(game);
 	sl_render_map(game);
-	ft_printf("1game->map_bool = %i\n", game->map_bool);
 	mlx_hook(game->win_ptr, ON_KEYDOWN, 1L << 0, sl_handle_input, game);
-	/* mlx_hook(game->win_ptr, ON_DESTROY, 1L << 17, sl_close_game, game); */
-	ft_printf("2game->map_bool = %i\n", game->map_bool);
+	mlx_hook(game->win_ptr, ON_DESTROY, 1L << 17, sl_close_game, game);
 	mlx_loop(game->mlx_ptr);
-	ft_printf("3game->map_bool = %i\n", game->map_bool);
 	return (0);
 }
