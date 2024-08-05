@@ -6,7 +6,7 @@
 /*   By: dangonz3 <dangonz3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 15:17:04 by dangonz3          #+#    #+#             */
-/*   Updated: 2024/07/30 20:39:35 by dangonz3         ###   ########.fr       */
+/*   Updated: 2024/08/05 18:58:15 by dangonz3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	sl_handle_enemies(t_game *game);
 
 int	sl_handle_input(int keysym, t_game *game)
 {
+	ft_printf("sl_handle_input\n");
 	if (keysym == KEY_ESC)
 		sl_close_game(game);
 	if (keysym == KEY_UP || keysym == KEY_W)

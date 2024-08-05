@@ -6,7 +6,7 @@
 /*   By: dangonz3 <dangonz3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 20:12:47 by dangonz3          #+#    #+#             */
-/*   Updated: 2024/07/25 18:04:54 by dangonz3         ###   ########.fr       */
+/*   Updated: 2024/08/05 18:52:14 by dangonz3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	sl_close_game(t_game *game)
 	ft_printf(COLOR_GREEN "Movements: %d\n" COLOR_RESET, game->movements);
 	ft_printf(COLOR_GREEN "GAME CLOSED\n" COLOR_RESET);
 	sl_free_all_allocated_memory(game);
-	exit (1);
+	exit (0);
 }
 
 void	sl_free_all_allocated_memory(t_game *game)

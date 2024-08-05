@@ -6,7 +6,7 @@
 /*   By: dangonz3 <dangonz3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 20:44:45 by dangonz3          #+#    #+#             */
-/*   Updated: 2024/07/25 19:42:37 by dangonz3         ###   ########.fr       */
+/*   Updated: 2024/08/05 19:22:56 by dangonz3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void	sl_init_mlx(t_game *game)
 	game->map.axis_x * IMG_SIZE, game->map.axis_y * IMG_SIZE, "SO_LONG");
 	if (!game->win_ptr)
 		sl_error("Couldn`t open a window.\n", game);
-	mlx_hook(game->win_ptr, ON_DESTROY, 1L << 17, sl_close_game, (void *)&game);
 }
 
 void	sl_init_sprites(t_game *game)
