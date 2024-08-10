@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   initiate_game.c                                    :+:      :+:    :+:   */
+/*   initiate_game_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dangonz3 <dangonz3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 11:11:08 by dangonz3          #+#    #+#             */
-/*   Updated: 2024/08/05 19:10:31 by dangonz3         ###   ########.fr       */
+/*   Updated: 2024/08/02 16:19:41 by dangonz3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../includes/so_long_bonus.h"
 
 void	sl_initiate_game(int argc, char **argv, t_game *game);
 void	sl_check_arguments(int argc, char **argv, t_game *game);

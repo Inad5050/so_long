@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render_map.c                                       :+:      :+:    :+:   */
+/*   render_map_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dangonz3 <dangonz3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 12:44:45 by dangonz3          #+#    #+#             */
-/*   Updated: 2024/07/25 16:58:44 by dangonz3         ###   ########.fr       */
+/*   Updated: 2024/07/25 19:42:43 by dangonz3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../includes/so_long_bonus.h"
 
 int		sl_render_map(t_game *game);
 void	sl_identify_sprite(t_game *game, int y, int x);
@@ -55,6 +55,8 @@ void	sl_identify_sprite(t_game *game, int y, int x)
 	}
 	else if (game->map.all[y][x] == PLAYER)
 		sl_render_player (game, y, x);
+	else if (game->map.all[y][x] == ENEMY)
+		sl_render_sprite (game, game->enemy_sprite, y, x);
 }
 
 void	sl_render_player(t_game *game, int y, int x)

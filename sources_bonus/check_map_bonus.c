@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_map.c                                        :+:      :+:    :+:   */
+/*   check_map_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dangonz3 <dangonz3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 18:25:48 by dangonz3          #+#    #+#             */
-/*   Updated: 2024/07/25 17:01:24 by dangonz3         ###   ########.fr       */
+/*   Updated: 2024/07/25 19:42:12 by dangonz3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../includes/so_long_bonus.h"
 
 void	sl_check_map(t_game *game);
 void	sl_check_limits(t_game *game);
@@ -79,7 +79,7 @@ void	sl_count_map_elements(t_game *game)
 		x = 0;
 		while (x < game->map.axis_x)
 		{
-			if (!ft_strchr("10CPE", game->map.all[y][x]))
+			if (!ft_strchr("10CPEF", game->map.all[y][x]))
 				sl_error("Invalid Map. Unexpected map parameter!\n", game);
 			sl_sum_map_elements(game, y, x);
 			x++;
@@ -102,4 +102,6 @@ void	sl_sum_map_elements(t_game *game, int y, int x)
 		game->map.coin_number++;
 	else if (game->map.all[y][x] == EXIT)
 		game->map.exit_number++;
+	else if (game->map.all[y][x] == ENEMY)
+		game->map.enemy_number++;
 }

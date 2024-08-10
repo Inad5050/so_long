@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   initiate_images.c                                  :+:      :+:    :+:   */
+/*   initiate_images_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dangonz3 <dangonz3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 20:44:45 by dangonz3          #+#    #+#             */
-/*   Updated: 2024/08/05 18:59:50 by dangonz3         ###   ########.fr       */
+/*   Updated: 2024/08/05 19:22:56 by dangonz3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../includes/so_long_bonus.h"
 
 void		sl_init_mlx(t_game *game);
 void		sl_init_sprites(t_game *game);
@@ -39,6 +39,7 @@ void	sl_init_sprites(t_game *game)
 	game->player_back = sl_new_sprite(PLAYER_SPRITE_BACK, game);
 	game->exit_open = sl_new_sprite(EXIT_OPEN_SPRITE, game);
 	game->exit_closed = sl_new_sprite(EXIT_CLOSED_SPRITE, game);
+	game->enemy_sprite = sl_new_sprite(ENEMY_SPRITE, game);
 }
 
 t_sprite	sl_new_sprite(char *file, t_game *game)
@@ -50,4 +51,9 @@ t_sprite	sl_new_sprite(char *file, t_game *game)
 	if (!image.sprite_ptr)
 		sl_error("Couldn't find a sprite.\n", game);
 	return (image);
+}
+
+int	sl_distance(int y, int x, int t_y, int t_x)
+{
+	return (sqrt((y - t_y) * (y - t_y) + (x - t_x) * (x - t_x)));
 }
