@@ -87,5 +87,5 @@ void	sl_handle_mimics(t_game *game, int b)
 	}
 	else if(game->map.mimic_active % 2 != 0)
 		game->map.all[y][x] = COIN;
-	game->map.mimic_active++;
+	game->map.mimic_active == srand(game->rand_seed);;
 }

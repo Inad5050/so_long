@@ -17,6 +17,7 @@
 # include <math.h>
 # include "../mlx/mlx.h"
 # include "../libft/libft.h"
+# include <time.h>
 
 //map elements
 # define WALL		'1'

@@ -108,5 +108,6 @@ void	sl_init_vars(t_game *game)
 	game->player_sprite = FRONT;
 	game->map.boss_a_active = 0;
 	game->game_loop = 0;
-	game->map.mimic_active = 0;
+	game->rand_seed = time(NULL);
+	game->map.mimic_active = srand(game->rand_seed);
 }
