@@ -16,7 +16,7 @@ This repository contains my implementation of the so_long project from the 42 cu
 
 ## About
 
-so_long is a project that introduces the basics of graphical programming. The task is to build a simple game where a player navigates a map, collects items, and reaches an exit. The game must be built using the MiniLibX, a simple X-Window programming API provided by 42.
+**so_long** is a project that introduces the basics of graphical programming. The task is to build a simple game where a player navigates a map, collects items, and reaches an exit. The game must be built using the MiniLibX, a simple X-Window programming API provided by 42.
 
 The core gameplay loop involves:
 
