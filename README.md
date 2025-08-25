@@ -109,8 +109,8 @@ To clean and recompile everything:
 
 Run the game with a map file as an argument:
 
-```$ ./so_long maps/your_map.ber```
+```$ ./so_long maps/level_1.ber```
 
-If you're interested in seeing the full version feel free to check out the full_version branch in this repository!
+There are 6 levels. Good luck!
 
 ![Screenshot of the full game version](ScreenshotSL.png)
