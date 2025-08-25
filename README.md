@@ -65,6 +65,7 @@ This version of so_long includes one enemy type to make the game more challengin
 
     Basic Enemy (F): Patrols a set path.
 
+![Screenshot](ScreenshotSL2.png)
 
 ## Requirements
 
