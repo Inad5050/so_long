@@ -110,6 +110,6 @@ Run the game with a map file as an argument:
 
 ```$ ./so_long maps/basico.ber```
 
-If you're interested in seeing the full version feel free to check out the full_version branch in this repository!
+If you're interested in seeing the full version feel free to check out the **versionCompleta** branch in this repository!
 
 ![Screenshot of the full game version](ScreenshotSL.png)
