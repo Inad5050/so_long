@@ -113,4 +113,4 @@ Run the game with a map file as an argument:
 
 If you're interested in seeing the full version feel free to check out the full_version branch in this repository!
 
-![Screenshot of the full game version](Screenshot from 2025-08-25 16-10-22.jpg)
+![Screenshot of the full game version](ScreenshotSL.png)
