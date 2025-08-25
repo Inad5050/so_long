@@ -19,12 +19,12 @@ char	*ft_strjoin(char *s1, const char *s2)
 	int		len_s2;
 	char	*result;
 
-	i = 0;
 	len_s1 = ft_strlen(s1);
 	len_s2 = ft_strlen(s2);
 	result = ft_calloc(len_s1 + len_s2 + 1, sizeof(char));
 	if (result == NULL)
 		return (NULL);
+	i = 0;
 	while (s1[i])
 	{
 		result[i] = s1[i];

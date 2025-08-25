@@ -29,8 +29,6 @@ void	sl_check_arguments(int argc, char **argv, t_game *game)
 {
 	int	map_parameter_len;
 
-	game->map_bool = 0;
-	game->images_bool = 0;
 	if (argc > 2)
 		sl_error("Too many arguments!\n", game);
 	if (argc < 2)
@@ -50,14 +48,12 @@ void	sl_init_map(t_game *game, char *argv)
 	if (map_fd == -1)
 		sl_error("Can`t open Map!\n", game);
 	map_temp = ft_strdup("");
-	game->map.axis_y = 0;
 	while (1)
 	{
 		line_temp = ft_get_next_line(map_fd);
 		if (line_temp == NULL)
 			break ;
-		map_temp = ft_strjoin(map_temp, line_temp);
-		free(line_temp);
+		map_temp = long_strjoin(map_temp, line_temp);
 		game->map.axis_y++;
 	}
 	close(map_fd);

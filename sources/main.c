@@ -16,7 +16,7 @@ int	main(int argc, char	**argv)
 {
 	t_game	*game;
 
-	game = malloc(sizeof(t_game));
+	game = ft_calloc(1, sizeof(t_game));
 	if (!game)
 		return (ft_printf("\nERROR\nCouldn't assign memory for game.\n"), 1);
 	sl_initiate_game(argc, argv, game);

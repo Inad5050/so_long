@@ -89,11 +89,17 @@ void	sl_movement_counter(t_game *game)
 {
 	char	*movements;
 	char	*coins;
+	char	*movements_str;
+	char	*coin_number_str;
 
-	movements = ft_strjoin("MOVEMENTS : ", ft_itoa(game->movements));
-	coins = ft_strjoin("COINS : ", ft_itoa(game->map.coin_number));
+	movements_str = ft_itoa(game->movements);
+	coin_number_str = ft_itoa(game->map.coin_number);
+	movements = ft_strjoin("MOVEMENTS : ", movements_str);
+	coins = ft_strjoin("COINS : ", coin_number_str);
 	mlx_string_put(game->mlx_ptr, game->win_ptr, 15, 15, 0xFFFFFF, movements);
 	mlx_string_put(game->mlx_ptr, game->win_ptr, 200, 15, 0xFFFFFF, coins);
+	free(movements_str);
+	free(coin_number_str);
 	free(movements);
 	free(coins);
 }

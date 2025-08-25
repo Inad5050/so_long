@@ -13,7 +13,7 @@
 # NAME = so_long
 NAME = so_long
 CC = gcc
-CCFLAGS = -Wall -Wextra -Werror
+CCFLAGS = -Wall -Wextra -Werror -g
 
 # colors
 COLOR_GREEN = \033[0;32m
@@ -21,10 +21,7 @@ COLOR_RESET = \033[0m
 
 # sources
 SRC_DIR = sources/
-# SRC_FILES = check_map close_game handle_input initiate_game initiate_map render_map so_long
-SRC_FILES = check_map.c check_map2.c close_game.c close_game2.c handle_input.c initiate_images.c initiate_game.c render_map.c basic_enemy.c flood_map.c boss_a.c boss_b.c mimic_enemy.c main.c
-# SRC = $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
-SRC = $(addprefix $(SRC_DIR), $(SRC_FILES))
+SRC = $(shell find $(SRC_DIR) -name "*.c")
 OBJ = $(SRC:.c=.o)
 
 # headers

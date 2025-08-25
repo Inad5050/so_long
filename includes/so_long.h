@@ -260,4 +260,7 @@ void		sl_free_map(t_game *game);
 void		sl_free_enemies(t_game *game);
 void		sl_destroy_images(t_game *game);
 
+//utility
+char		*long_strjoin(char *s1, char *s2);
+
 #endif

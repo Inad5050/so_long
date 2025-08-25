@@ -82,15 +82,17 @@ void	sl_free_enemies(t_game *game)
 	{
 		free(game->map.boss_a);
 		i = 0;
-		while (i < game->map.boss_a_number)
+		while (i < game->map.axis_y)
 			free(game->map.boss_a_route[i++]);
+		free(game->map.boss_a_route);
 	}
 	if (game->map.boss_b_number > 0)
 	{
 		free(game->map.boss_b);
 		i = 0;
-		while (i < game->map.boss_b_number)
+		while (i < game->map.axis_y)
 			free(game->map.boss_b_route[i++]);
+		free(game->map.boss_b_route);
 	}
 	if (game->map.mimic)
 		free(game->map.mimic);
